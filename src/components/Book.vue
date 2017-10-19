@@ -57,8 +57,8 @@ export default {
     var book_id = this.$route.params.book_id
     this.bookId = book_id
     var self = this
-    //axios.get('http://localhost:88/BOOK_SHOP/client/api/book/'+ this.bookId, this.config)
-    axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/book/'+ this.bookId, this.config)
+    axios.get('http://localhost:88/BOOK_SHOP/client/api/book/'+ this.bookId, this.config)
+    //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/book/'+ this.bookId, this.config)
         .then(function (response) {
           self.book = response.data.data
           if(self.book.length == 0)
@@ -72,8 +72,8 @@ export default {
       });
 
       if(localStorage['hash_log'] && localStorage['user']){
-        //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-        axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
               .then(function (response) {
                 if(parseInt(response.data.data)>0){
                   self.is_login = true
@@ -115,8 +115,8 @@ export default {
     add_cart(book_id){
       var self = this
       if(localStorage['hash_log'] && localStorage['user']){
-        //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-        axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
           .then(function (response) {
             var client_id = parseInt(response.data.data)
             if(client_id>0){
@@ -125,8 +125,8 @@ export default {
             data.append("client_id",client_id)
             data.append("count",self.book_count)
           
-            //axios.post('http://localhost:88/BOOK_SHOP/client/api/cart/', data, self.config)         
-            axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/', data, self.config)
+            axios.post('http://localhost:88/BOOK_SHOP/client/api/cart/', data, self.config)         
+            //axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/', data, self.config)
             .then(function (response) {
               console.log(response)
               if(response.data.data == '1') {

@@ -128,8 +128,8 @@ export default {
   created(){
     var self = this
     if(localStorage['hash_log'] && localStorage['user']){
-        //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-        axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
             .then(function (response) {
               //console.log(response.data.data)
               var client_id = parseInt(response.data.data) 
@@ -140,8 +140,8 @@ export default {
                 self.is_registr = false
                 self.login = localStorage['user']
 
-                //axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
-                axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
+                axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
+                //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
                 .then(function (response) {
                   console.log(response.data)
                   if(response.data.data == null) 
@@ -181,8 +181,8 @@ export default {
 			}else{
          var self = this
         this.err_log = ""
-        axios.put('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/', 
-        //axios.put('http://localhost:88/BOOK_SHOP/client/api/auth/', 
+        //axios.put('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/', 
+        axios.put('http://localhost:88/BOOK_SHOP/client/api/auth/', 
         {
           login: this.login,
           password: this.password
@@ -203,8 +203,8 @@ export default {
               localStorage['hash_log'] = response.data['data'].status
               localStorage['user'] = self.login
               var client_id = response.data['data'].client_id;
-              //axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
-              axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
+              axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
+              //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id, self.config)
                 .then(function (response) {
                   console.log(response.data)
                   if(response.data.data == null) 
@@ -292,8 +292,8 @@ export default {
         data.append("email",this.email)
         data.append("phone",this.phone)
 
-        //axios.post('http://localhost:88/BOOK_SHOP/client/api/auth/', data, this.config)         
-        axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/', data, this.config)
+        axios.post('http://localhost:88/BOOK_SHOP/client/api/auth/', data, this.config)         
+        //axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/', data, this.config)
           .then(function (response) {
             console.log(response.data.err)
             if(response.data.err && response.data.err ==true){

@@ -79,8 +79,8 @@ export default {
   created(){
 
     var self = this
-      //axios.get('http://localhost:88/BOOK_SHOP/client/api/ganre/', this.config)
-      axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/ganre/', this.config)
+      axios.get('http://localhost:88/BOOK_SHOP/client/api/ganre/', this.config)
+      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/ganre/', this.config)
             .then(function (response) {
               self.ganres = response.data.data 
               //console.log(self.ganres)
@@ -89,8 +89,8 @@ export default {
         //console.log(error)
       });
 
-      //axios.get('http://localhost:88/BOOK_SHOP/client/api/author/', this.config)
-      axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/author/', this.config)
+      axios.get('http://localhost:88/BOOK_SHOP/client/api/author/', this.config)
+      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/author/', this.config)
             .then(function (response) {
               //console.log(response.data)
               self.authors = response.data.data 
@@ -126,8 +126,8 @@ export default {
       if((""+ganre_id) != "") req_str = ganre_id + "/-"
       else if((""+author_id) != "") req_str = "-/"+author_id
       else req_str = ""
-      //axios.get('http://localhost:88/BOOK_SHOP/client/api/book/' + req_str, this.config)
-      axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/book/' + req_str, this.config)
+      axios.get('http://localhost:88/BOOK_SHOP/client/api/book/' + req_str, this.config)
+      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/book/' + req_str, this.config)
             .then(function (response) {
               console.log(response)
               self.books = response.data.data
@@ -145,8 +145,8 @@ export default {
       //this.show_book_item = false
       this.filter_info = ""
       this.search_info_res = ""
-      //axios.get('http://localhost:88/BOOK_SHOP/client/api/book/' + this.filterstring, this.config)
-      axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/book/' + this.filterstring, this.config)
+      axios.get('http://localhost:88/BOOK_SHOP/client/api/book/' + this.filterstring, this.config)
+      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/book/' + this.filterstring, this.config)
             .then(function (response) {
               self.books = response.data.data
               if(self.books.length == 0)

@@ -36,8 +36,8 @@ export default {
   created(){
    
      var self = this
-      //axios.get('http://localhost:88/BOOK_SHOP/client/api/payment/', this.config)
-      axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/payment/', this.config)
+      axios.get('http://localhost:88/BOOK_SHOP/client/api/payment/', this.config)
+      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/payment/', this.config)
             .then(function (response) {
               self.payment_methods = response.data.data 
               //console.log(self.ganres)
@@ -59,21 +59,21 @@ export default {
        var self = this
        this.isOrd = ""
         if(localStorage['hash_log'] && localStorage['user']){
-        //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-        axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
           .then(function (response) {
             var client_id = parseInt(response.data.data)
             if(client_id>0){
               //-----get info about client  
-               //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+ client_id, self.config)
-                  axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+ client_id , self.config)
+               axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+ client_id, self.config)
+              //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+ client_id , self.config)
                   .then(function (response) {
                      
                     if(response.data.status == '200') {
                       self.client = response.data.data 
                       console.log(self.client)
-                      //axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
-                          axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
+                      axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
+                      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
                           .then(function (response) {
                             console.log(response.data.data)
                             self.cart = response.data.data
@@ -108,8 +108,8 @@ export default {
                             data.append("payment_id",self.payment_id) 
                             data.append("discount_client",self.client_discount)
                             data.append("total_price",self.total_price)
-                            //axios.post('http://localhost:88/BOOK_SHOP/client/api/order/', data, self.config)         
-                            axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/order/', data, self.config)
+                            axios.post('http://localhost:88/BOOK_SHOP/client/api/order/', data, self.config)         
+                            //axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/order/', data, self.config)
                             .then(function (response) {
                               //console.log(response)
                               if(response.data.status=='200'){
@@ -123,8 +123,8 @@ export default {
                                       data.append("book_price",element.price)
                                       data.append("count",element.count)
                                       data.append("discount_book",element.book_discount)
-                                      //axios.post('http://localhost:88/BOOK_SHOP/client/api/fullinfoorder/', data, self.config)         
-                                      axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/fullinfoorder/', data, self.config)
+                                      axios.post('http://localhost:88/BOOK_SHOP/client/api/fullinfoorder/', data, self.config)         
+                                      //axios.post('http://192.168.0.15/~user15/BOOK_SHOP/client/api/fullinfoorder/', data, self.config)
                                       .then(function (response) { 
                                           console.log(response.data)
                                       }).catch(function (error) {

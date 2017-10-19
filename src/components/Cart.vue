@@ -70,18 +70,18 @@ export default {
     
 
       if(localStorage['hash_log'] && localStorage['user']){
-        //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-        axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+        //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
               .then(function (response) {
                 var client_id = parseInt(response.data.data)
                 if(client_id>0){
-                  //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+ client_id, self.config)
-                  axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+ client_id , self.config)
+                  axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+ client_id, self.config)
+                  //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+ client_id , self.config)
                   .then(function (response) {
                      self.client = response.data.data
                     self.client_discount =  parseFloat( self.client.discount)
-                      //axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
-                      axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
+                      axios.get('http://localhost:88/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
+                      //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+ client_id +'/1', self.config)
                       .then(function (response) {
                         //console.log(response.data.data)
                         self.cart = response.data.data
@@ -142,15 +142,15 @@ export default {
           if(this.cart[i].id==book_id){
              del=i
             if(localStorage['hash_log'] && localStorage['user']){
-            //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-            axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+            axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+            //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
               .then(function (response) {
                 var client_id = parseInt(response.data.data)
                 if(client_id>0){ 
                   if (confirm("Are you sure you want to cancel this order?")) {
                       //axios.delete('http://localhost:88/BOOK_SHOP/client/api/cart/'+book_id, self.config)
-                      axios.delete('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+book_id+'/'+client_id, self.config)
-                      //axios.delete('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+book_id, self.config)
+                      //axios.delete('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+book_id+'/'+client_id, self.config)
+                      axios.delete('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/'+book_id, self.config)
                           .then(function (response) {
                             //console.log(self.cart);
                           if(response.data.data==1){
@@ -216,16 +216,16 @@ export default {
       var self = this
       var up = 0, rup = 0
       if(localStorage['hash_log'] && localStorage['user']){
-            //axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
-            axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+            axios.get('http://localhost:88/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
+            //axios.get('http://192.168.0.15/~user15/BOOK_SHOP/client/api/auth/'+localStorage['hash_log']+"/"+localStorage['user'], this.config)
               .then(function (response) {
                 var client_id = parseInt(response.data.data)
                 if(client_id>0){ 
                     self.cart.forEach(function(el) {
                       if(el.upfl && el.upfl == true){
                         up++
-                      axios.put('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/', 
-                        //axios.put('http://localhost:88/BOOK_SHOP/client/api/cart/', 
+                      //axios.put('http://192.168.0.15/~user15/BOOK_SHOP/client/api/cart/', 
+                      axios.put('http://localhost:88/BOOK_SHOP/client/api/cart/', 
                         {
                           book_id: el.id,
                           count: el.count,
